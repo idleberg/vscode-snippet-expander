@@ -1,0 +1,60 @@
+{
+	"name": "vscode-snippet-expander",
+	"version": "0.1.0",
+	"description": "VS Code's snippet parser with an expand() helper and a Vitest toExpandTo matcher",
+	"license": "MIT",
+	"files": [
+		"dist"
+	],
+	"type": "module",
+	"main": "./dist/index.cjs",
+	"module": "./dist/index.mjs",
+	"types": "./dist/index.d.cts",
+	"exports": {
+		".": {
+			"import": {
+				"types": "./dist/index.d.mts",
+				"default": "./dist/index.mjs"
+			},
+			"require": {
+				"types": "./dist/index.d.cts",
+				"default": "./dist/index.cjs"
+			}
+		},
+		"./vitest": {
+			"import": {
+				"types": "./dist/vitest.d.mts",
+				"default": "./dist/vitest.mjs"
+			},
+			"require": {
+				"types": "./dist/vitest.d.cts",
+				"default": "./dist/vitest.cjs"
+			}
+		},
+		"./package.json": "./package.json"
+	},
+	"scripts": {
+		"build": "tsdown",
+		"dev": "tsdown --watch",
+		"check": "tsc",
+		"format": "oxfmt",
+		"lint": "oxlint",
+		"test": "vitest run"
+	},
+	"devDependencies": {
+		"oxfmt": "^0.72.0",
+		"oxlint": "^1.87.0",
+		"tsdown": "^0.23.1",
+		"typescript": "^7.0.2",
+		"vitest": "^5.0.5"
+	},
+	"peerDependencies": {
+		"vitest": "^5"
+	},
+	"peerDependenciesMeta": {
+		"vitest": {
+			"optional": true
+		}
+	},
+	"packageManager": "pnpm@12.16.1+sha512.091d1dee7927575661b25dab3c2ae31cafc1c54d6b71ed6a6600cf0c1cb10434a447eae14015f1b23e2e6bedeed79df94a932e2164d2832280dce3fb32f656d1"
+}

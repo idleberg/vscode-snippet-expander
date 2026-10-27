@@ -1,0 +1,18 @@
+[tools]
+node = "24"
+hk = "latest"
+pkl = "latest"
+
+[settings]
+node.corepack = true
+
+[env]
+HK_MISE = 1
+COREPACK_ENABLE_DOWNLOAD_PROMPT = 0
+_.path = ["{{config_root}}/node_modules/.bin"]
+
+[hooks]
+postinstall = """
+  hk install --mise
+  pnpm install --frozen-lockfile
+"""

@@ -1,0 +1,23 @@
+amends "package://github.com/jdx/hk/releases/download/v2.5.0/hk@2.5.0#/Config.pkl"
+import "package://github.com/jdx/hk/releases/download/v2.5.0/hk@2.5.0#/Builtins.pkl"
+
+// Both resolve to node_modules/.bin through mise.toml, and skip the files ignored in their configs.
+local linters = new Mapping<String, Step> {
+    ["oxfmt"] = Builtins.oxfmt
+    ["oxlint"] = Builtins.ox_lint
+}
+
+hooks {
+    ["pre-commit"] {
+        fix = true
+        stash = "git"
+        steps = linters
+    }
+    ["fix"] {
+        fix = true
+        steps = linters
+    }
+    ["check"] {
+        steps = linters
+    }
+}
